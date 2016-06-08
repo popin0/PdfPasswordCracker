@@ -12,42 +12,40 @@ import com.itextpdf.text.pdf.PdfReader;
 public class GuessUrPdfPasswd implements Runnable{
 	
 	private static volatile boolean workOn = true;
-	private static volatile int guess;
+//	private static volatile int guess;
 	
 	Thread t;
 
-	GuessUrPdfPasswd(String t_name, int guess){
-		GuessUrPdfPasswd.guess = guess;
+	GuessUrPdfPasswd(String t_name){
 		t = new Thread(this, t_name);
+		t.setPriority(Thread.MAX_PRIORITY);
 		System.out.println("Thread created: "+t);
 		t.start();
 	}
 	
 	public void run(){
-		guessAndTry("results/security/outpdf_encrypted.pdf",
-					"results/security/hello.pdf");
+		guessAndTry(GuessUrPdfPasswdMain.SRC, GuessUrPdfPasswdMain.DEST);
 	}
 	
-    private static void guessAndTry(String src, String dest) {
-    	boolean workOn = true;
+    private static void guessAndTry(String src, String dest) { 
+    	int myGuess;
     	PdfReader.unethicalreading = true;
     	while(workOn){
     		PdfReader reader;
 			try {
-//				System.out.println("trying with: "+tryPasswd);
-				reader = new PdfReader(src, String.valueOf(GuessUrPdfPasswd.guess++).getBytes());
+				myGuess = GuessUrPdfPasswdMain.guess++;
+//				System.out.println("trying with: "+myGuess);
+				reader = new PdfReader(src, String.valueOf(myGuess).getBytes());
+				workOn = false;
 				inspect(reader);
 	            createCopy(reader, dest);
 	            reader.close();
-	            workOn = false;
-	            System.out.println("The password for your file was: "+ (GuessUrPdfPasswd.guess - 1));
+	            System.out.println("The password for your file was: "+ myGuess);
 			} catch (IOException | DocumentException e) {
 				
 			}   		
             
-    	}        
-        
-        System.out.println("Always in your service: Password cracked successfully");
+    	}         
     }
     
     private static void createCopy(PdfReader reader, String dest) throws IOException, DocumentException {

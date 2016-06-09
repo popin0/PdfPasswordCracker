@@ -6,6 +6,7 @@ public class GuessUrPdfPasswdMain {
     public static final String DEST = "results/security/noname_cracked.pdf";
     
     public static volatile int guess = 100000;
+    public static int maxGuess = 999999;
 	public static void main(String[] args) {
 		
 		long start = System.currentTimeMillis();
@@ -34,11 +35,11 @@ public class GuessUrPdfPasswdMain {
 			t9.t.join();
 			t10.t.join();
 		} catch (InterruptedException e) {
-			System.out.println("something happened in run()");
+			System.out.println("Somewhere something went wrong run()");
 			e.printStackTrace();
 		}		
 		long elapsed = System.currentTimeMillis() - start;
-		System.out.println("Always in your service:\n    Password cracked successfully in "+ elapsed +" milisecs");
+		System.out.println("Always in your service:"+ elapsed +" milisecs");
 	}
 
 }

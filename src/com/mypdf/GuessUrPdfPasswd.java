@@ -30,10 +30,13 @@ public class GuessUrPdfPasswd implements Runnable{
     private static void guessAndTry(String src, String dest) { 
     	int myGuess;
     	PdfReader.unethicalreading = true;
+    	PdfReader reader;
     	while(workOn){
-    		PdfReader reader;
 			try {
 				myGuess = GuessUrPdfPasswdMain.guess++;
+				if(myGuess > GuessUrPdfPasswdMain.maxGuess){
+					workOn = false;
+				}
 //				System.out.println("trying with: "+myGuess);
 				reader = new PdfReader(src, String.valueOf(myGuess).getBytes());
 				workOn = false;

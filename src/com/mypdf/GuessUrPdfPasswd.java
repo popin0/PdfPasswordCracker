@@ -9,6 +9,18 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfCopy;
 import com.itextpdf.text.pdf.PdfReader;
 
+/**
+ * 
+ * @author Khundongbam Popinjoy
+ * Creates a thread in MAX_PRIORITY
+ * tries to open a pdf by guessing the user password with unethicalreading set to true
+ * then copies the pages to a new document
+ * It gives you the user password of the original file and a copy of the file without passwrd protection
+ * 
+ *  You can enhanced its usability by providing a pattern generator
+ *  ENJOY
+ *
+ */
 public class GuessUrPdfPasswd implements Runnable{
 	
 	private static volatile boolean workOn = true;

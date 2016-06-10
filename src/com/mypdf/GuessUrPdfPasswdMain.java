@@ -1,11 +1,20 @@
 package com.mypdf;
 
+/**
+ * 
+ * @author Khundongbam Popinjoy
+ * SRC: Password protected pdf file
+ * DEST: Name of the unprotected copy of the file
+ * instead of guess you can supply patterns ganerated with your conditions
+ * ENJOY
+ *
+ */
 public class GuessUrPdfPasswdMain {
 	
 	public static final String SRC = "results/security/noname.pdf";
     public static final String DEST = "results/security/noname_cracked.pdf";
     
-    public static volatile int guess = 0;
+    public static volatile int guess = 100000;
     public static int maxGuess = 999999;
 	public static void main(String[] args) {
 		

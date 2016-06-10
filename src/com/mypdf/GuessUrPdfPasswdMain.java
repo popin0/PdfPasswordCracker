@@ -5,7 +5,7 @@ public class GuessUrPdfPasswdMain {
 	public static final String SRC = "results/security/noname.pdf";
     public static final String DEST = "results/security/noname_cracked.pdf";
     
-    public static volatile int guess = 100000;
+    public static volatile int guess = 0;
     public static int maxGuess = 999999;
 	public static void main(String[] args) {
 		
@@ -39,7 +39,7 @@ public class GuessUrPdfPasswdMain {
 			e.printStackTrace();
 		}		
 		long elapsed = System.currentTimeMillis() - start;
-		System.out.println("Always in your service:"+ elapsed +" milisecs");
+		System.out.println("Always in your service:"+ elapsed +" millisecs");
 	}
 
 }

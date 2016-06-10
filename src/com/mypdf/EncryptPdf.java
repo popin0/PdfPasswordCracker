@@ -15,7 +15,7 @@ import java.io.IOException;
  
 public class EncryptPdf {
  
-    public static final String SRC = "resources/outpdf.pdf";
+    public static final String SRC = "results/security/noname.pdf";
     public static final String DEST = "results/security/outpdf_encrypted.pdf";
  
     public static void main(String[] args) throws IOException, DocumentException {
@@ -28,7 +28,7 @@ public class EncryptPdf {
     public void manipulatePdf(String src, String dest) throws IOException, DocumentException {
         PdfReader reader = new PdfReader(src);
         PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(dest));
-        stamper.setEncryption("158581".getBytes(), "World".getBytes(),
+        stamper.setEncryption("795138".getBytes(), "World".getBytes(),
             PdfWriter.ALLOW_PRINTING, PdfWriter.ENCRYPTION_AES_128 | PdfWriter.DO_NOT_ENCRYPT_METADATA);
         stamper.close();
         reader.close();
